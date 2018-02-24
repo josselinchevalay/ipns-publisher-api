@@ -5,9 +5,6 @@
  * Routes contains the functions (callbacks) associated with request urls.
  */
 
-// dependencies
-var geocoder = require('geocoder');
-
 // our db model
 var Person = require("../models/model.js");
 
