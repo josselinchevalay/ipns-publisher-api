@@ -23,8 +23,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride());
 
 // connecting to database
-app.db = mongoose.connect(process.env.MONGOLAB_URI);
-console.log("connected to database");
+/*app.db = mongoose.connect(process.env.MONGOLAB_URI);
+console.log("connected to database");*/
 
 /**
  * CORS support for AJAX requests
@@ -53,17 +53,19 @@ app.all('*', function(req, res, next){
 
 // ROUTES, logic is in routes/index.js
 
-var routes = require('./routes/index.js');
+var routes = require('./routes/ipfs.js');
 
 // home route is not really an API route, but does respond back
 app.get('/', routes.index); // calls index function in /routes/index.js
 
+app.get('/api/ipfs/status', routes.status);
 // API routes
-app.post('/api/create', routes.create); // API create route and callback (see /routes/index.js)
+/*app.post('/api/create', routes.create); // API create route and callback (see /routes/index.js)
 app.get('/api/get/:id', routes.getOne); // API retrieve 1 route and callback (see /routes/index.js)
 app.get('/api/get', routes.getAll); // API retrieve all route and callback (see /routes/index.js)
 app.post('/api/update/:id', routes.update); // API update route and callback (see /routes/index.js)
 app.get('/api/delete/:id', routes.remove); // API delete route and callback (see /routes/index.js)
+*/
 
 // if route not found, respond with 404
 app.use(function(req, res, next){
@@ -81,3 +83,5 @@ app.use(function(req, res, next){
 http.createServer(app).listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
+
+module.exports = app;

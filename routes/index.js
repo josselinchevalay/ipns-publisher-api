@@ -133,9 +133,8 @@ exports.getOne = function(req,res){
  */
 
 exports.getAll = function(req,res){
-
 	// mongoose method, see http://mongoosejs.com/docs/api.html#model_Model.find
-	Person.find(function(err, data){
+	Person.find({},function(err, data){
 		// if err or no users found, respond with error 
 		if(err || data == null){
   		var jsonData = {status:'ERROR', message: 'Could not find people'};
