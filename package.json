@@ -10,7 +10,7 @@
     "request": "^2.51.0"
   },
   "scripts": {
-    "test": "mocha --timeout 10000",
+    "test": "mocha --exit",
     "start": "node app.js"
   },
   "engines": {
