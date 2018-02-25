@@ -1,7 +1,7 @@
-exports.status = (req, resp) => {
+exports.status = function(req, resp) {
 	resp.json({"id":"mock", "status": "ok"});
 }
 
-exports.index = (req, resp) => {
+exports.index = function(req, resp) {
 	resp.json({"message" : "service works and up"});
 }
